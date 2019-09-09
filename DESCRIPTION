@@ -1,20 +1,18 @@
-Package: pkgtemplate
-Title: What the Package Does (One Line, Title Case)
+Package: miscutils
+Title: Miscellaneous utility functions
 Version: 0.0.0.9000
 Authors@R: c(
     person("Audrey", "Beliveau", , "audrey.beliveau@uwaterloo.ca", c("aut", "cre"))
     )
-Description: What the package does (one paragraph).
+Description: Miscellaneous utility functions.
 License: GPL-3
 Imports: 
   chk
 Suggests: 
     covr,
     testthat
-Remotes:
-  poissonconsulting/chk
-URL: https://github.com/audrey-b/pkgtemplate
-BugReports: https://github.com/audrey-b/pkgtemplate/issues
+URL: https://github.com/audrey-b/miscutils
+BugReports: https://github.com/audrey-b/miscutils/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
