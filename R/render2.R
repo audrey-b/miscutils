@@ -16,7 +16,9 @@ render2 <- function(filename, dir = getwd(), output_format = "pdf_document", ...
   if(output_format == "pdf_document") format<-"pdf"
   if(output_format == "html_document") format<-"html"
   
-  path <- file.path(dir, paste0(filename, ".Rmd"))
+  path <- file.path(dir, filename)
+  
+  filename <- sub(pattern = "(.*)\\..*$", replacement = "\\1", basename(filename))
   
   file <- basename(path)
   tempDir <- tempfile()
