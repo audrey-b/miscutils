@@ -28,7 +28,7 @@ render2 <- function(filename, dir = getwd(), output_format = "pdf_document", ...
   
   rmarkdown::render(newPath, output_format = output_format, ...)
   renderedPath <- file.path(tempDir, paste0(filename, ".", format))
-  file.copy(renderedPath, paste0(dir, filename, ".", format))
+  file.copy(renderedPath, file.path(dir, paste0(filename, ".", format)))
   
   viewer <- getOption("viewer")
   viewer(renderedPath)
