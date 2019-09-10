@@ -12,6 +12,8 @@ Imports:
 Suggests: 
     covr,
     testthat
+Remotes:
+  poissonconsulting/chk
 URL: https://github.com/audrey-b/miscutils
 BugReports: https://github.com/audrey-b/miscutils/issues
 Encoding: UTF-8
