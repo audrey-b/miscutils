@@ -36,10 +36,13 @@ render2 <- function(input = rstudioapi::getSourceEditorContext()$path,
   file.copy(renderedFiles, newdir, overwrite=TRUE)
   
   if(preview==TRUE){
-  viewer <- getOption("viewer")
-  for(i in length(renderedFiles):1){
-    rstudioapi::viewer(renderedFiles[[i]])
-  }}
+    listview <- NULL
+    viewer <- getOption("viewer")
+    for(i in length(renderedFiles):1){
+      rstudioapi::viewer(renderedFiles[[i]])
+      Sys.sleep(0.5)
+    }
+  }
   
 }
 
