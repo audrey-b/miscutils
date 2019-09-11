@@ -17,9 +17,6 @@ render2 <- function(input = rstudioapi::getSourceEditorContext()$path,
                     replace = getOption("path.replace.list"),
                     ...){
   
-  if(output_format == "pdf_document") format<-"pdf"
-  if(output_format == "html_document") format<-"html"
-  
   filename <- basename(input)
   filenameraw <- sub(pattern = "(.*)\\..*$", replacement = "\\1", filename)
   dir <- normalizePath(dirname(input), winslash = "/") 
