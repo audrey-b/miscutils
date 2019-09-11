@@ -5,7 +5,6 @@
 #' 
 #' @param input The path of the input file to be rendered. Generally an R Markdown document (.Rmd). Defaults to the active file in the RStudio editor.
 #' @param replace A list of two strings. The first string will be replaced by the second one in the path. This can be used to solve issues when working from a mapped disk.
-#' @param output_format The R Markdown output format to convert to. Currently only "pdf_document" and "html_document" are supported
 #' @param ... Arguments to pass to rmarkdown::render.
 #' 
 #' @export
@@ -16,7 +15,6 @@
 
 render2 <- function(input = rstudioapi::getSourceEditorContext()$path,
                     replace = getOption("path.replace.list"),
-                    output_format = "pdf_document", 
                     ...){
   
   if(output_format == "pdf_document") format<-"pdf"
@@ -31,19 +29,18 @@ render2 <- function(input = rstudioapi::getSourceEditorContext()$path,
     newdir <- sub("\\\\", "", newdir, fixed=TRUE)
   }
   
-  renderedPath <- file.path(newdir, paste0(filenameraw, ".", format))
   newinput <- file.path(newdir, filename)
   
-  rmarkdown::render(newinput, output_format = output_format, ...)
-  # file <- basename(renderedPath)
-  # tempDir <- tempfile()
-  # dir.create(tempDir)
-  # renderedFile <- file.path(tempDir, file)
-  # file.copy(renderedPath, renderedFile)
-  # viewer <- getOption("viewer")
-  # viewer(renderedFile)
+  tempDir <- tempfile()
+  dir.create(tempDir)
+  
+  rmarkdown::render(newinput, output_dir = tempDir, output_format = "all", ...)
+  renderedFiles <- list.files(tempDir, full.names = TRUE)
+  file.copy(renderedFiles, newdir, overwrite=TRUE)
   
   viewer <- getOption("viewer")
-  viewer(renderedPath)
+  
+  for(i in 1:length(renderedFiles)) viewer(renderedFiles[[i]])
+  
 }
 
