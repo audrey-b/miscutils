@@ -37,8 +37,9 @@ render2 <- function(input = rstudioapi::getSourceEditorContext()$path,
   
   if(preview==TRUE){
   viewer <- getOption("viewer")
-  for(i in 1:length(renderedFiles)) viewer(renderedFiles[[i]])
-  }
+  for(i in length(renderedFiles):1){
+    rstudioapi::viewer(renderedFiles[[i]])
+  }}
   
 }
 

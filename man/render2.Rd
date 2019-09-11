@@ -18,5 +18,5 @@ render2(input = rstudioapi::getSourceEditorContext()$path,
 }
 \description{
 This function provides an alternative to the Knit button in RStudio, which tends to fail when working from a mapped disk. 
-It is based on the \code{\link[rmarkdown]{render}} function but also provides a preview of the rendered document.
+It is based on the \code{\link[rmarkdown]{render}} function but also provides a preview of the rendered document like Knit.
 }

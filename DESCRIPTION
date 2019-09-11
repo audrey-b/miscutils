@@ -8,7 +8,8 @@ Description: Miscellaneous utility functions.
 License: GPL-3
 Imports: 
   chk,
-  rmarkdown
+  rmarkdown,
+  rstudioapi
 Suggests: 
     covr,
     testthat
