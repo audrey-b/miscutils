@@ -4,18 +4,19 @@
 \alias{render2}
 \title{A function to render and preview markdown documents.}
 \usage{
-render2(filename, dir = getwd(), output_format = "pdf_document", ...)
+render2(input = rstudioapi::getSourceEditorContext()$path,
+  replace = getOption("path.replace.list"), preview = TRUE, ...)
 }
 \arguments{
-\item{filename}{The name of the input file to be rendered. Generally an R Markdown document (.Rmd).}
+\item{input}{The path of the input file to be rendered. Generally an R Markdown document (.Rmd). Defaults to the active file in the RStudio editor.}
 
-\item{dir}{The directory where the input file is located.}
+\item{replace}{A list of two strings. The first string will be replaced by the second one in the path. This can be used to solve issues when working from a mapped disk.}
 
-\item{output_format}{The R Markdown output format to convert to. Currently only "pdf_document" and "html_document" are implemented.}
+\item{preview}{Whether to preview the rendered documents.}
 
-\item{...}{Arguments to pass to rmarkdown::render.}
+\item{...}{Arguments to pass to \code{\link[rmarkdown]{render}}. For example, output_format="all" will render all formats defined within the file.}
 }
 \description{
-This function provides a solution to the knit button in RStudio, which fails when working from a mounted disk. It has the
-advantage over the rmarkdown::render function to provide a preview of the rendered document.
+This function provides an alternative to the Knit button in RStudio, which tends to fail when working from a mapped disk. 
+It is based on the \code{\link[rmarkdown]{render}} function but also provides a preview of the rendered document.
 }
